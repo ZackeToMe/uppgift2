@@ -13,10 +13,10 @@ void returnStruct()
     Currency currencyStruct;
     int indexCounter = 0;
     int counter = 0;
-    char valueTemp[4];
-    char countryTemp[3];
-    FILE *infile = fopen("C:\\SchoolProjects\\Embedded programmering\\uppgift2\\valutor.txt", "r");
-    while (!feof(infile))
+    char *valueTemp;
+    char *countryTemp;
+    FILE *infile = fopen("/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/valutor.txt", "r");
+    while (!feof(infile)) // Re do using strtok function https://cplusplus.com/reference/cstring/strtok/
     {
         char ch = fgetc(infile);
         if (isalpha(ch))
