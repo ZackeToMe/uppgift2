@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <ctype.h>
 
+// Use https://cplusplus.com/reference/cstring/ strtok to partition string according to different whitespaces
+// Use
+
 typedef struct currency {
     int value;
     char *countryCode;
@@ -10,7 +13,6 @@ Currency currencyStructArray[100];
 
 void returnStruct()
 {
-    Currency currencyStruct;
     int indexCounter = 0;
     int counter = 0;
     char valueTemp[4];
