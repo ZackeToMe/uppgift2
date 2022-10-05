@@ -6,66 +6,66 @@ typedef struct currency {
     char *countryCode;
 } Currency;
 
-struct returnStructArray(char[] indata)
+struct currency returnStruct(const char *indata)
 {
     Currency currencyStruct;
+    Currency *currencyStructArray;
+    int indexCounter = 0;
     int counter = 0;
-    int valueTemp = 0;
+    char *valueTemp;
     char *countryTemp;
     FILE *infile = fopen(indata, "r");
     while (!feof(infile))
     {
-        character = fgetc(infile);
-        if (isalpha(character))
+        char ch = fgetc(infile);
+        if (isalpha(ch))
         {
-            countryTemp[counter] = character;
+            countryTemp[counter] = ch;
             switch (counter)
             {
                 case 0:
-                    countryTemp[counter] = character;
+                    countryTemp[counter] = ch;
                     break;
                 case 1:
-                    countryTemp[counter] = character;
+                    countryTemp[counter] = ch;
                     break;
                 case 2:
-                    countryTemp[counter] = character;
-                    break;
-                case 3:
-                    countryTemp[counter] = '\0';
-                    counter = 0;
-
+                    countryTemp[counter] = ch;
                     break;
             }
         }
-        if else (isdigit(character))
+        else if(isdigit(ch))
         {
-            valueTemp = character;
             switch (counter)
             {
                 case 0:
-                    valueTemp += character*100;
+                    valueTemp[counter] = ch;
                     break;
                 case 1:
-                    valueTemp += character*10;
+                    valueTemp[counter] = ch;
                     break;
                 case 2:
-                    valueTemp += character*1;
-                    break;
-                case 3:
-                    counter = 0;
+                    valueTemp[counter] = ch;
                     break;
             }
         }
         else
         {
-
+            counter = 0;
+            continue;
         }
         currencyStruct.countryCode = countryTemp;
-        currencyStruct.value = valueTemp;
+        currencyStruct.value = (int)valueTemp;
+        currencyStructArray[indexCounter] = currencyStruct;
+        indexCounter++;
     }
+    return *currencyStructArray;
 }
 
 int main() {
-    printf("Hello, World!\n");
+    Currency cSA = returnStruct("indata.txt");
+    int lengthOfStruct = sizeof(cSA) / sizeof(cSA[0]);
+    for (int i = 0; i < lengthOfStruct; i++)
+        printf("Hello, World!\n");
     return 0;
 }
