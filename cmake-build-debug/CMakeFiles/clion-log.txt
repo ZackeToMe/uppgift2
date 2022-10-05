@@ -1,4 +1,4 @@
-/snap/clion/206/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S "/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2" -B "/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/cmake-build-debug"
+C:\Users\edvin\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\222.4167.35\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=C:/Users/edvin/AppData/Local/JetBrains/Toolbox/apps/CLion/ch-0/222.4167.35/bin/ninja/win/ninja.exe -G Ninja -S "C:\SchoolProjects\Embedded programmering\uppgift2" -B "C:\SchoolProjects\Embedded programmering\uppgift2\cmake-build-debug"
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/cmake-build-debug
+-- Build files have been written to: C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug

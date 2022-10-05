@@ -1,3 +1,3 @@
-/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/cmake-build-debug/CMakeFiles/uppgift2.dir
-/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/uppgift2.dir
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/rebuild_cache.dir

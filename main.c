@@ -6,15 +6,16 @@ typedef struct currency {
     char *countryCode;
 } Currency;
 
-struct currency returnStruct(const char *indata)
+Currency *currencyStructArray;
+
+void returnStruct()
 {
     Currency currencyStruct;
-    Currency *currencyStructArray;
     int indexCounter = 0;
     int counter = 0;
     char *valueTemp;
     char *countryTemp;
-    FILE *infile = fopen(indata, "r");
+    FILE *infile = fopen("valutor.txt", "r");
     while (!feof(infile))
     {
         char ch = fgetc(infile);
@@ -25,12 +26,15 @@ struct currency returnStruct(const char *indata)
             {
                 case 0:
                     countryTemp[counter] = ch;
+                    counter++;
                     break;
                 case 1:
                     countryTemp[counter] = ch;
+                    counter++;
                     break;
                 case 2:
                     countryTemp[counter] = ch;
+                    counter = 0;
                     break;
             }
         }
@@ -59,12 +63,11 @@ struct currency returnStruct(const char *indata)
         currencyStructArray[indexCounter] = currencyStruct;
         indexCounter++;
     }
-    return *currencyStructArray;
 }
 
 int main() {
-    Currency cSA = returnStruct("indata.txt");
-    int lengthOfStruct = sizeof(cSA) / sizeof(cSA[0]);
+    returnStruct();
+    int lengthOfStruct = sizeof(currencyStructArray) / sizeof(currencyStructArray[0]);
     for (int i = 0; i < lengthOfStruct; i++)
         printf("Hello, World!\n");
     return 0;
