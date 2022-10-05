@@ -6,13 +6,11 @@ typedef struct currency {
     char *countryCode;
 } Currency;
 
-struct returnStruct(const char *indata)
+struct returnStructArray(char[] indata)
 {
     Currency currencyStruct;
-    Currency currencyStructArray[];
-    indexCounter = 0;
     int counter = 0;
-    char *valueTemp;
+    int valueTemp = 0;
     char *countryTemp;
     FILE *infile = fopen(indata, "r");
     while (!feof(infile))
@@ -32,37 +30,42 @@ struct returnStruct(const char *indata)
                 case 2:
                     countryTemp[counter] = character;
                     break;
+                case 3:
+                    countryTemp[counter] = '\0';
+                    counter = 0;
+
+                    break;
             }
         }
         if else (isdigit(character))
         {
+            valueTemp = character;
             switch (counter)
             {
                 case 0:
-                    valueTemp[counter] = character;
-                break;
+                    valueTemp += character*100;
+                    break;
                 case 1:
-                    valueTemp[counter] = character;
-                break;
+                    valueTemp += character*10;
+                    break;
                 case 2:
-                    valueTemp[counter] = character;
-                break;
+                    valueTemp += character*1;
+                    break;
+                case 3:
+                    counter = 0;
+                    break;
             }
         }
         else
         {
-            counter = 0;
-            continue;
+
         }
         currencyStruct.countryCode = countryTemp;
-        currencyStruct.value = int(valueTemp);
-        currencyStructArray[indexCounter] = currencyStruct;
-        indexCounter++;
+        currencyStruct.value = valueTemp;
     }
 }
 
 int main() {
-    returnStruct("indata.txt");
     printf("Hello, World!\n");
     return 0;
 }
