@@ -1,0 +1,3 @@
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/uppgift2.dir
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/SchoolProjects/Embedded programmering/uppgift2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
