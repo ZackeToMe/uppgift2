@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <stdlib.h>
+#include <string.h>
 
 // Use https://cplusplus.com/reference/cstring/ strtok to partition string according to different whitespaces
 // Use
@@ -11,71 +13,72 @@ typedef struct currency {
 
 Currency currencyStructArray[100];
 
-void returnStruct()
+void cleanIndata()
 {
-    int indexCounter = 0;
-    int counter = 0;
-    char *valueTemp;
-    char *countryTemp;
-    FILE *infile = fopen("/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/valutor.txt", "r");
-    while (!feof(infile)) // Re do using strtok function https://cplusplus.com/reference/cstring/strtok/
+    const int BUFFER_SIZE = 10000;
+    FILE *infile = fopen("..\\valutor.txt", "r");
+    if (infile == NULL)
     {
-        char ch = fgetc(infile);
-        if (isalpha(ch))
+        printf("Error!");
+        exit(0);
+    }
+    int numberOfCurrencies = 33;
+    char buffer[BUFFER_SIZE];
+    fread(buffer, sizeof(char), BUFFER_SIZE, infile);
+
+    char *currency;
+    currency = strtok(buffer, " \t\n");
+    int counter = 0;
+    int indexCounter = 0;
+
+    while (currency != NULL)
+    {
+        if (counter % 2 == 0)
         {
-            countryTemp[counter] = ch;
-            switch (counter)
-            {
-                case 0:
-                    countryTemp[counter] = ch;
-                    counter++;
-                    continue;
-                case 1:
-                    countryTemp[counter] = ch;
-                    counter++;
-                    continue;
-                case 2:
-                    countryTemp[counter] = ch;
-                    counter = 0;
-                    currencyStructArray[indexCounter].countryCode = countryTemp;
-                    continue;
-            }
-        }
-        else if(isdigit(ch))
-        {
-            switch (counter)
-            {
-                case 0:
-                    valueTemp[counter] = ch;
-                    continue;
-                case 1:
-                    valueTemp[counter] = ch;
-                    continue;
-                case 2:
-                    valueTemp[counter] = ch;
-                    counter = 0;
-                    currencyStructArray[indexCounter].value = (int)valueTemp;
-                    continue;
-            }
-        }
-        else if (counter != 0)
-        {
-            counter = 0;
-            indexCounter++;
-            continue;
+            currencyStructArray[indexCounter].countryCode = currency;
         }
         else
         {
-            counter = 0;
-            continue;
+            currencyStructArray[indexCounter].value = atoi(currency);
+            indexCounter++;
         }
+        currency = strtok(NULL, " \t\r\n");
+        counter++;
+
     }
+//    for (int i = 0; i < numberOfCurrencies; i++)
+//    {
+//        //behandla buffern strtok include string.h
+//        //läsa ut valutans namn
+//        //läsa ut valutans värde
+//        char *currencyCountry;
+//        currencyCountry = strtok(buffer, " \t\n");
+//        char *currencyValue;
+//        currencyValue = strtok(buffer, " \t\n");
+//        if(currencyCountry != NULL)
+//        {
+//            currencyStructArray[i].countryCode = currencyCountry;
+//        }
+//        if(currencyValue != 0)
+//        {
+//            currencyStructArray[i].value = (int)currencyValue;
+//        }
+//        char *currency = strtok(buffer, " ,.\t\n");
+//        char *currencyValue = strtok(buffer, " ,.\t\n");
+//        currencyStructArray[i].countryCode = currency;
+//        currencyStructArray[i].value = (int)currencyValue;
+
+//    }
 }
 
+
+
+
 int main() {
-    returnStruct();
+    cleanIndata();
     int lengthOfStruct = sizeof(currencyStructArray) / sizeof(currencyStructArray[0]);
     for (int i = 0; i < lengthOfStruct; i++)
-        printf("Country: %s\nExchange rate: %d", currencyStructArray[i].countryCode, currencyStructArray[i].countryCode);
+        if(currencyStructArray[i].countryCode != NULL)git
+            printf("Country: %s Exchange rate: %d\n", currencyStructArray[i].countryCode, currencyStructArray[i].value);
     return 0;
 }
