@@ -78,7 +78,7 @@ int main() {
     cleanIndata();
     int lengthOfStruct = sizeof(currencyStructArray) / sizeof(currencyStructArray[0]);
     for (int i = 0; i < lengthOfStruct; i++)
-        if(currencyStructArray[i].countryCode != NULL)git
+        if(currencyStructArray[i].countryCode != NULL)
             printf("Country: %s Exchange rate: %d\n", currencyStructArray[i].countryCode, currencyStructArray[i].value);
     return 0;
 }
