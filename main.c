@@ -42,7 +42,7 @@ void cleanIndata()
             currencyStructArray[indexCounter].value = atoi(currency);
             indexCounter++;
         }
-        currency = strtok(NULL, " \t\n\r\n");
+        currency = strtok(NULL, " \t\r\n");
         counter++;
 
     }
@@ -78,7 +78,7 @@ int main() {
     cleanIndata();
     int lengthOfStruct = sizeof(currencyStructArray) / sizeof(currencyStructArray[0]);
     for (int i = 0; i < lengthOfStruct; i++)
-        if(currencyStructArray[i].countryCode != NULL)
+        if(currencyStructArray[i].countryCode != NULL)git
         printf("Country: %s Exchange rate: %d\n", currencyStructArray[i].countryCode, currencyStructArray[i].value);
     return 0;
 }
