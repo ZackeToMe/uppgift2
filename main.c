@@ -27,7 +27,7 @@ void cleanIndata()
     fread(buffer, sizeof(char), BUFFER_SIZE, infile);
 
     char *currency;
-    currency = strtok(buffer, " \t\n");
+    currency = strtok(buffer, " \t\r\n");
     int counter = 0;
     int indexCounter = 0;
 
