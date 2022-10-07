@@ -27,7 +27,7 @@ void cleanIndata()
     fread(buffer, sizeof(char), BUFFER_SIZE, infile);
 
     char *currency;
-    currency = strtok(buffer, " \t\n");
+    currency = strtok(buffer, " \t\r\n");
     int counter = 0;
     int indexCounter = 0;
 
@@ -78,7 +78,7 @@ int main() {
     cleanIndata();
     int lengthOfStruct = sizeof(currencyStructArray) / sizeof(currencyStructArray[0]);
     for (int i = 0; i < lengthOfStruct; i++)
-        if(currencyStructArray[i].countryCode != NULL)git
+        if(currencyStructArray[i].countryCode != NULL)
             printf("Country: %s Exchange rate: %d\n", currencyStructArray[i].countryCode, currencyStructArray[i].value);
     return 0;
 }
