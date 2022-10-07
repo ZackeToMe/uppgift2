@@ -13,7 +13,7 @@ void cleanIndata()
 {
     // Open file with exchange rates.
     // OBS! file path need to be updated to correct location in HDD
-    FILE *infile = fopen("/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/valutor.txt", "r");
+    FILE *infile = fopen("../valutor.txt", "r");
 
     // Return error if file can not be read
     if (infile == NULL)
