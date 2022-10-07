@@ -1,10 +1,6 @@
 #include <stdio.h>
-#include <ctype.h>
 #include <stdlib.h>
 #include <string.h>
-
-// Use https://cplusplus.com/reference/cstring/ strtok to partition string according to different whitespaces
-// Use
 
 typedef struct currency {
     int value;
@@ -15,14 +11,19 @@ Currency currencyStructArray[100];
 
 void cleanIndata()
 {
-    const int BUFFER_SIZE = 10000;
-    FILE *infile = fopen("..\\valutor.txt", "r");
+    // Open file with exchange rates.
+    // OBS! file path need to be updated to correct location in HDD
+    FILE *infile = fopen("/home/esarandon/Documents/KYH - IoT/11. Programmering inbyggda system/uppgift2/valutor.txt", "r");
+
+    // Return error if file can not be read
     if (infile == NULL)
     {
         printf("Error!");
         exit(0);
     }
-    int numberOfCurrencies = 33;
+
+    // Copy file information to a buffer
+    const int BUFFER_SIZE = 10000;
     char buffer[BUFFER_SIZE];
     fread(buffer, sizeof(char), BUFFER_SIZE, infile);
 
@@ -31,6 +32,7 @@ void cleanIndata()
     int counter = 0;
     int indexCounter = 0;
 
+    //while loop to split information in country code and value
     while (currency != NULL)
     {
         if (counter % 2 == 0)
@@ -44,35 +46,8 @@ void cleanIndata()
         }
         currency = strtok(NULL, " \t\r\n");
         counter++;
-
     }
-//    for (int i = 0; i < numberOfCurrencies; i++)
-//    {
-//        //behandla buffern strtok include string.h
-//        //läsa ut valutans namn
-//        //läsa ut valutans värde
-//        char *currencyCountry;
-//        currencyCountry = strtok(buffer, " \t\n");
-//        char *currencyValue;
-//        currencyValue = strtok(buffer, " \t\n");
-//        if(currencyCountry != NULL)
-//        {
-//            currencyStructArray[i].countryCode = currencyCountry;
-//        }
-//        if(currencyValue != 0)
-//        {
-//            currencyStructArray[i].value = (int)currencyValue;
-//        }
-//        char *currency = strtok(buffer, " ,.\t\n");
-//        char *currencyValue = strtok(buffer, " ,.\t\n");
-//        currencyStructArray[i].countryCode = currency;
-//        currencyStructArray[i].value = (int)currencyValue;
-
-//    }
 }
-
-
-
 
 int main() {
     cleanIndata();
